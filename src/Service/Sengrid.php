@@ -4,7 +4,7 @@ class Sendgrid extends BaseService
 {
     /**
      *
-     * @var \SendinBlue\Client\Api\SMTPApi
+     * @var \SendGrid
      */
     public $apiInstance = null;
     
@@ -25,7 +25,7 @@ class Sendgrid extends BaseService
             $email->addContent("text/plain", $$this->processParams($template->content_text, $params));
         }
         // Enviamos Email
-        return $this->service->send($email);    
+        return $this->apiInstance->send($email);    
     }
 
     /**

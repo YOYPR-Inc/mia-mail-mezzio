@@ -29,7 +29,8 @@ class ConfigProvider
     {
         return [
             'factories' => [
-                //AuthorizationMiddleware::class => AuthorizationMiddlewareFactory::class,
+                \Mia\Mail\Service\Sendgrid::class => \Mia\Mail\Factory\SendgridFactory::class,
+                \Mia\Mail\Handler\SendgridHandler::class => \Mia\Mail\Factory\SendgridHandlerFactory::class,
             ],
         ];
     }
