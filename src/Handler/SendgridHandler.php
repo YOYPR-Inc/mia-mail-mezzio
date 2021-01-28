@@ -12,7 +12,7 @@ use Mia\Core\Diactoros\MiaJsonErrorResponse;
  *
  * @author matiascamiletti
  */
-class SendgridHandler implements \Mia\Core\Middleware\MiaBaseMiddleware
+class SendgridHandler extends \Mia\Core\Middleware\MiaBaseMiddleware
 {
     /**
      * @var \Mobileia\Expressive\Mail\Service\Sendgrid
