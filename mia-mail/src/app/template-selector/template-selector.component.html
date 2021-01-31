@@ -1,8 +1,8 @@
 <div class="">
     <mat-form-field appearance="fill">
         <mat-label>Selector de template</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let template of templates" [value]="template.slug">
+        <mat-select (selectionChange)="onSelectTemplate($event)">
+          <mat-option *ngFor="let template of templates" [value]="template">
             {{template.title}}
           </mat-option>
         </mat-select>

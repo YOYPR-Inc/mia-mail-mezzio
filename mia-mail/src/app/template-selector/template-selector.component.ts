@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 import MIATemplate from '../entities/template';
 import { TemplateService } from '../services/template.service';
 
@@ -9,6 +10,8 @@ import { TemplateService } from '../services/template.service';
 })
 export class TemplateSelectorComponent implements OnInit {
 
+  @Output() selectedTemplate = new EventEmitter<MIATemplate>();
+
   templates: Array<MIATemplate> = [];
 
   constructor(
@@ -16,6 +19,10 @@ export class TemplateSelectorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onSelectTemplate(data: MatSelectChange) {
+    this.selectedTemplate.emit(data.value);
   }
 
   refreshTemplates() {

@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() updateUrl = new EventEmitter<string>();
 
-  baseUrl = 'https://agencycoda.com';
+  baseUrl = 'https://vulnwatch-development.ts.r.appspot.com/';
 
   constructor() { }
 

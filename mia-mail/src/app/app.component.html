@@ -1,2 +1,52 @@
 <app-header (updateUrl)="refreshTemplates($event)"></app-header>
-<app-template-selector #templateSelector></app-template-selector>
+<app-template-selector #templateSelector (selectedTemplate)="selectedTemplate($event)"></app-template-selector>
+
+<div *ngIf="template" class="" fxLayout="row" fxLayoutAlign="space-between">
+  <div class="config">
+    <h2>Info del template</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Titulo</mat-label>
+      <input matInput placeholder="Base URL" [(ngModel)]="template.title" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>slug</mat-label>
+      <input matInput placeholder="Base URL" [(ngModel)]="template.slug" readonly />
+    </mat-form-field>
+    <h2>Variables</h2>
+    <div class="vars">
+      <div class="var-item" *ngFor="let varItem of template.vars">
+        <mat-form-field class="example-full-width">
+          <mat-label>ID (solo minusculas)</mat-label>
+          <input matInput placeholder="ID" [(ngModel)]="varItem.id" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Titulo</mat-label>
+          <input matInput placeholder="Titulo" [(ngModel)]="varItem.title" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripción</mat-label>
+          <input matInput placeholder="Descripción" [(ngModel)]="varItem.caption" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Testing</mat-label>
+          <input matInput placeholder="Ejemplo para preview" [(ngModel)]="varItem.testing" />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button (click)="addVar()">Agregar variable</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <button *ngIf="typeShow == 1" mat-raised-button (click)="typeShow = 0">Ver Codigo</button>
+    <button *ngIf="typeShow == 0" mat-raised-button (click)="typeShow = 1">Ver Preview</button>
+
+    <div *ngIf="typeShow == 0" class="content-code">
+      <textarea [(ngModel)]="template.content"></textarea>
+    </div>
+    <div *ngIf="typeShow == 1" class="content-preview">
+      <iframe [srcdoc]="getSanitizierHtml()"></iframe>
+    </div>
+
+  </div>
+</div>

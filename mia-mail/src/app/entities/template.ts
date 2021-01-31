@@ -5,7 +5,7 @@ export default class MIATemplate {
     subject: string = '';
     content: string = '';
     content_text: string = '';
-    vars = [];
-    data = [];
+    vars: Array<any> = [];
+    data: Array<any> = [];
   }
   
