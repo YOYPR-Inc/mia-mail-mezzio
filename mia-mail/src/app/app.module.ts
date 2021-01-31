@@ -12,6 +12,7 @@ import { TemplateSelectorComponent } from './template-selector/template-selector
 import { TemplateVarsComponent } from './template-vars/template-vars.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     MatInputModule,
     MatSelectModule

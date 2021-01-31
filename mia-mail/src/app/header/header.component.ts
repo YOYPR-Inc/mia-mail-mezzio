@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() updateUrl = new EventEmitter<string>();
+
   baseUrl = 'https://agencycoda.com';
 
   constructor() { }
@@ -14,4 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChangeUrl() {
+    this.updateUrl.emit(this.baseUrl);
+  }
 }

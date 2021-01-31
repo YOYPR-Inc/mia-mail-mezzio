@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-template-selector></app-template-selector>
+<app-header (updateUrl)="refreshTemplates($event)"></app-header>
+<app-template-selector #templateSelector></app-template-selector>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationService, MiaAuthHttpService } from '@mobileia/authentication';
+import MIATemplate from '../entities/template';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class TemplateService extends MiaAuthHttpService {
   }
 
   fetchAllTemplates(): Promise<any> {
-    return this.postAuthObjectPro(this.baseUrl + 'mia-mail/templates', { });
+    return this.postAuthObjectPro(this.baseUrl + 'mia-mail/list', { });
+  }
+
+  saveTemplate(template: MIATemplate): Promise<any> {
+    return this.postAuthObjectPro(this.baseUrl + 'mia-mail/save', template);
   }
 }

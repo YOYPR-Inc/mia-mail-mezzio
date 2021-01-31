@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { TemplateService } from './services/template.service';
+import { TemplateSelectorComponent } from './template-selector/template-selector.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mia-mail';
+  
+  @ViewChild('templateSelector')
+  templateSelector!: TemplateSelectorComponent;
+
+  constructor(
+    protected templateService: TemplateService
+  ){
+
+  }
+
+  refreshTemplates(newUrl: string) {
+    this.templateService.baseUrl = newUrl;
+    this.templateSelector.refreshTemplates();
+  }
 }
