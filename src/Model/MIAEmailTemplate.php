@@ -8,6 +8,12 @@ class MIAEmailTemplate extends \Illuminate\Database\Eloquent\Model
      * @var array
      */
     //protected $hidden = ['deleted', 'password'];
+
+    protected $casts = [
+        'vars' => 'array',
+        'data' => 'array',
+    ];
+
     public $timestamps = false;
 
 }
