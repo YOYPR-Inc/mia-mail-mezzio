@@ -12,6 +12,10 @@ class Sendgrid extends BaseService
     {
         $template = $this->getTemplate($templateSlug);
 
+        if($template == null){
+            return false;
+        }
+
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom($this->from, $this->name);
         $email->setSubject($template->subject);
@@ -25,7 +29,11 @@ class Sendgrid extends BaseService
             $email->addContent("text/plain", $$this->processParams($template->content_text, $params));
         }
         // Enviamos Email
-        return $this->apiInstance->send($email);    
+        try {
+            return $this->apiInstance->send($email);
+        } catch (\Exception $th) {
+            return false;
+        }
     }
 
     /**
