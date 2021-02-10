@@ -1,10 +1,12 @@
-<div class="header" fxLayout="row" fxLayoutAlign="space-between">
-    <h1>MIA Mail</h1>
-    <div class="explorer">
-        <mat-form-field class="example-full-width">
-            <mat-label>Base URL</mat-label>
+<mat-toolbar color="primary">
+    <span>MIA Mail</span>
+    <span style="flex: 1 1 auto;"></span>
+    <mat-form-field>
+        <mat-label>Base URL</mat-label>
             <input matInput placeholder="Base URL" [(ngModel)]="baseUrl" />
         </mat-form-field>
-          <button mat-raised-button (click)="onChangeUrl()">Update</button>
-    </div>
-</div>
+    <button mat-raised-button (click)="onChangeUrl()" color="accent">
+        <span *ngIf="!isLoading"> Update </span>
+        <mat-spinner *ngIf="isLoading" [diameter]="30"></mat-spinner>
+    </button>
+</mat-toolbar>

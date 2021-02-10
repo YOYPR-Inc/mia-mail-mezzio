@@ -33,6 +33,10 @@ export class AppComponent {
     this.template?.vars.push({ id: '', title: '', caption: '', testing: '' });
   }
 
+  deleteVar() {
+    this.template?.vars.shift();
+  }
+
   getSanitizierHtml() {
     return this.sanitizer.bypassSecurityTrustHtml(this.template?.content!);
   }

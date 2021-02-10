@@ -1,0 +1,25 @@
+@import "../../vars";
+
+mat-toolbar{
+    @include xs{
+        flex-direction: column;
+        height: initial;
+        padding: 24px 16px;
+        mat-form-field { width: 100%; }
+    }
+    mat-form-field{
+        margin-top: 15px;
+        width: 280px;
+        margin-right: 16px;
+        font-size: 14px;
+        @include xs {
+            width: 100%;
+            margin: 0;
+        }
+    }
+    button{
+        height: 38px;
+        width: 80px;
+        mat-spinner { margin: auto !important; }
+    }
+}

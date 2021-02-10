@@ -1,4 +1,45 @@
-iframe {
-    min-width: 450px;
-    height: 400px;
+@import "../vars";
+
+.container{
+    padding: 24px;
+    @include xs {
+        padding: 16px 0;
+        text-align: center;
+    }
+
+    .config{
+        mat-form-field { width: 100%; }
+        .vars{
+            .var-item{
+                position: relative;
+                background-color: whitesmoke;
+                padding: 16px;
+                width: 100%;
+                border-radius: 6px;
+                margin-bottom: 12px !important;
+                .button-delete{
+                    position: absolute;
+                    top: 0; right: 0;
+                    padding: 0 !important;
+                }
+            }
+        }
+    }
+
+    .content{
+        .content-preview { margin-top: 16px; }
+        iframe, textarea {
+            width: 100%;
+            height: 600px;
+            max-height: 98vh;
+            border: 1px solid whitesmoke;
+            border-radius: 4px;
+            background-color: whitesmoke;
+        }
+        textarea{
+            width: calc(100% - 32px);
+            padding: 16px;
+            font-size: 15px;
+        }
+    }
 }

@@ -1,0 +1,7 @@
+@import "../../vars";
+
+mat-form-field{
+    @include xs{
+        margin: auto;
+    }
+}

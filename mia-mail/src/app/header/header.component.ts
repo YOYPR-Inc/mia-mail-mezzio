@@ -7,6 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  isLoading = false;
+
   @Output() updateUrl = new EventEmitter<string>();
 
   baseUrl = 'https://vulnwatch-development.ts.r.appspot.com/';

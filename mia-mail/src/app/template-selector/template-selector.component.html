@@ -1,10 +1,10 @@
-<div class="">
-    <mat-form-field appearance="fill">
-        <mat-label>Selector de template</mat-label>
-        <mat-select (selectionChange)="onSelectTemplate($event)">
-          <mat-option *ngFor="let template of templates" [value]="template">
-            {{template.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-</div>
+<mat-form-field appearance="fill">
+    <mat-label>Selector de template</mat-label>
+    <mat-select (selectionChange)="onSelectTemplate($event)">
+        <mat-option *ngFor="let template of templates" [value]="template">
+          {{template.title}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="accent" style="margin-left: 16px;">Guardar</button>
