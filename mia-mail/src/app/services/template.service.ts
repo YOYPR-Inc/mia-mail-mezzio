@@ -18,10 +18,10 @@ export class TemplateService extends MiaAuthHttpService {
   }
 
   fetchAllTemplates(): Promise<any> {
-    return this.postAuthObjectPro(this.baseUrl + 'mia-mail/list', { });
+    return this.postAuthObjectPro(this.baseUrl + 'mia-mail-admin/list', { });
   }
 
   saveTemplate(template: MIATemplate): Promise<any> {
-    return this.postAuthObjectPro(this.baseUrl + 'mia-mail/save', template);
+    return this.postAuthObjectPro(this.baseUrl + 'mia-mail-admin/save', template);
   }
 }
