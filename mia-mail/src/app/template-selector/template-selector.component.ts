@@ -13,6 +13,7 @@ export class TemplateSelectorComponent implements OnInit {
   @Output() selectedTemplate = new EventEmitter<MIATemplate>();
 
   templates: Array<MIATemplate> = [];
+  templateSelected: MIATemplate | undefined;
 
   constructor(
     protected templateService: TemplateService
@@ -21,7 +22,12 @@ export class TemplateSelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickSave() {
+    this.templateService.saveTemplate(this.templateSelected!).then();
+  }
+
   onSelectTemplate(data: MatSelectChange) {
+    this.templateSelected = data.value;
     this.selectedTemplate.emit(data.value);
   }
 

@@ -38,7 +38,23 @@ export class AppComponent {
   }
 
   getSanitizierHtml() {
-    return this.sanitizer.bypassSecurityTrustHtml(this.template?.content!);
+    return this.sanitizer.bypassSecurityTrustHtml(this.processVarsInTemplate(this.template?.content!));
+  }
+
+  processVarsInTemplate(content: string): string {
+    console.log(this.template?.vars);
+    if(this.template?.vars == undefined){
+      return content;
+    }
+
+    let html = content;
+
+    for (const vari of this.template?.vars!) {
+      html = html.replace('{{'+vari.id+'}}', vari.testing); 
+    }
+
+    console.log(html);
+    return html;
   }
 
   refreshTemplates(newUrl: string) {
