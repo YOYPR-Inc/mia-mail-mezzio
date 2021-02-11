@@ -42,8 +42,9 @@
     </div>
   
     <div fxFlex class="content box">
-      <button *ngIf="typeShow == 1" mat-raised-button color="primary" (click)="typeShow = 0">Ver Codigo</button>
-      <button *ngIf="typeShow == 0" mat-raised-button color="primary" (click)="typeShow = 1">Ver Preview</button>
+      <button *ngIf="typeShow == 1 || typeShow == 2" mat-raised-button color="primary" (click)="typeShow = 0"style="margin-right: 16px;">Ver Codigo</button>
+      <button *ngIf="typeShow == 0 || typeShow == 2" mat-raised-button color="primary" (click)="typeShow = 1">Ver Preview</button>
+      <button *ngIf="typeShow == 0 || typeShow == 1" mat-raised-button color="primary" (click)="typeShow = 2" style="margin-left: 16px;">Ver Plain Text</button>
   
       <div *ngIf="typeShow == 0" class="content-code intro-component-animation">
         <mat-form-field style="width: 100%;">
@@ -52,6 +53,11 @@
       </div>
       <div *ngIf="typeShow == 1" class="content-preview intro-component-animation">
         <iframe [srcdoc]="getSanitizierHtml()"></iframe>
+      </div>
+      <div *ngIf="typeShow == 2" class="content-code intro-component-animation">
+        <mat-form-field style="width: 100%;">
+          <textarea matInput [(ngModel)]="template.content_text"></textarea>
+        </mat-form-field>
       </div>
   
     </div>
