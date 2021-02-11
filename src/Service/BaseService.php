@@ -45,7 +45,12 @@ abstract class BaseService
 
     public function processParams($contentHtml, $vars)
     {
-        return $this->processArrayParams($contentHtml, '', $vars);
+        return $this->processArrayParams($contentHtml, '', array_merge(
+            [
+                'baseUrl' => $this->baseUrl
+            ],
+            $vars
+        ));
     }
 
     protected function processArrayParams($contentHtml, $varName, $vars)
