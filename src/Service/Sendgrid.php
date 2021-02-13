@@ -26,7 +26,7 @@ class Sendgrid extends BaseService
         
         // Asignamos si contiene email puro texto.
         if($template->content_text != ''){
-            $email->addContent("text/plain", $$this->processParams($template->content_text, $params));
+            $email->addContent("text/plain", $this->processParams($template->content_text, $params));
         }
         // Enviamos Email
         try {
