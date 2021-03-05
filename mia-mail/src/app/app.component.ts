@@ -17,6 +17,8 @@ export class AppComponent {
   template: MIATemplate | undefined;
   typeShow = 0;
 
+  previewEmail = '';
+
   constructor(
     protected templateService: TemplateService,
     protected sanitizer: DomSanitizer
@@ -27,6 +29,12 @@ export class AppComponent {
   selectedTemplate(template: MIATemplate) {
     this.template = template;
     console.log(this.template);
+  }
+
+  sendTest() {
+    this.templateService.sendTest(this.template!.id, this.previewEmail, this.template!.subject, this.processVarsInTemplate(this.template?.content!), this.template!.content_text).then(data => {
+      alert('Send!!');
+    });
   }
 
   addVar() {

@@ -39,6 +39,14 @@
   
         <button mat-raised-button (click)="addVar()">Agregar variable</button>
       </div>
+
+      <h2>Send Preview</h2>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email for test</mat-label>
+        <input matInput placeholder="Email for test" [(ngModel)]="previewEmail" />
+      </mat-form-field>
+
+      <button mat-raised-button (click)="sendTest()">Send</button>
     </div>
   
     <div fxFlex class="content box">

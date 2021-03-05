@@ -24,4 +24,8 @@ export class TemplateService extends MiaAuthHttpService {
   saveTemplate(template: MIATemplate): Promise<any> {
     return this.postAuthObjectPro(this.baseUrl + 'mia-mail-admin/save', template);
   }
+
+  sendTest(templateId: number, email: string, subject: string, contentHtml: string, contentText: string): Promise<any> {
+    return this.postAuthObjectPro(this.baseUrl + 'mia-mail-admin/send-preview', { id: templateId, email: email, subject: subject, content: contentHtml, content_text: contentText });
+  }
 }
