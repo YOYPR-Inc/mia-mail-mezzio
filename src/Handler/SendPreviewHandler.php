@@ -35,7 +35,7 @@ class SendPreviewHandler extends MiaAuthRequestHandler
 
         /* @var $sendgrid \Mia\Mail\Service\Sendgrid */
         $sendgrid = $request->getAttribute('Sendgrid');
-        $sendgrid->sendWithoutTemplate($testContent, $testSubject, $testContent);
+        $sendgrid->sendWithoutTemplate($testEmail, $testSubject, $testContent);
 
         // Devolvemos respuesta
         return new \Mia\Core\Diactoros\MiaJsonResponse(true);
