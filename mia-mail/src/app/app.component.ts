@@ -50,15 +50,17 @@ export class AppComponent {
   }
 
   processVarsInTemplate(content: string): string {
-    console.log(this.template?.vars);
-    if(this.template?.vars == undefined){
-      return content;
-    }
-
     let html = content;
 
+    html = html.replace(/\<\?php echo/g, '{{');
+    html = html.replace(/\?\>/g, '}}');
+
+    if(this.template?.vars == undefined){
+      return html;
+    }
+
     for (const vari of this.template?.vars!) {
-      html = html.replace('{{'+vari.id+'}}', vari.testing); 
+      html = html.replace(/{{'+vari.id+'}}/g, vari.testing); 
     }
 
     console.log(html);
