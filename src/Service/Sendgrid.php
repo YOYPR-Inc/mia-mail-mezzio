@@ -54,7 +54,7 @@ class Sendgrid extends BaseService
         try {
             return $this->apiInstance->send($email);
         } catch (\Exception $th) {
-            return false;
+            return $th->getMessage();
         }
     }
 
