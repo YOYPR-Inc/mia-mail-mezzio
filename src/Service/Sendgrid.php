@@ -58,6 +58,28 @@ class Sendgrid extends BaseService
         }
     }
 
+    public function sendHtml($addTo, $subject, $html, $plain = '')
+    {
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom($this->from, $this->name);
+        $email->setSubject($subject);
+        $email->addTo($addTo);
+        $email->addContent(
+            "text/html", $html
+        );
+        
+        // Asignamos si contiene email puro texto.
+        if($plain != ''){
+            $email->addContent("text/plain", $plain);
+        }
+        // Enviamos Email
+        try {
+            return $this->apiInstance->send($email);
+        } catch (\Exception $th) {
+            return $th->getMessage();
+        }
+    }
+
     /**
      * Funcion que se encarga de crear el servicio
      * @return boolean
