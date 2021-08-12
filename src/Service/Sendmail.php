@@ -33,13 +33,10 @@ class Sendmail extends BaseService
             $body->setParts([$html]);
         }        
 
-        $message = new Message();
-        $message->setBody($body);
-
         //$contentTypeHeader = $message->getHeaders()->get('Content-Type');
         //$contentTypeHeader->setType('multipart/alternative');
 
-        $mail->setBody($message);
+        $mail->setBody($body);
 
         // Enviamos Email
         try {
@@ -81,13 +78,10 @@ class Sendmail extends BaseService
             $body->setParts([$html]);
         }        
 
-        $message = new Message();
-        $message->setBody($body);
-
         //$contentTypeHeader = $message->getHeaders()->get('Content-Type');
         //$contentTypeHeader->setType('multipart/alternative');
 
-        $mail->setBody($message);
+        $mail->setBody($body);
 
         // Enviamos Email
         try {
