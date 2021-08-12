@@ -13,7 +13,8 @@
         "agencycoda/mia-core-mezzio": "dev-main",
         "agencycoda/mia-eloquent-mezzio": "dev-main",
         "agencycoda/mia-auth-mezzio": "dev-main",
-        "sendgrid/sendgrid": "~7"
+        "sendgrid/sendgrid": "~7",
+        "laminas/laminas-mail": "^2.14"
     },
     "autoload": {
         "psr-4": {
