@@ -29,6 +29,29 @@ class Sendgrid extends BaseService
             return false;
         }
     }
+
+    public function sendWithoutTemplateWithReplyTo($replyEmail, $replyName, $addTo, $subject, $contentHtml, $contentText = '')
+    {
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom($this->from, $this->name);
+        $email->setReplyTo($replyEmail, $replyName);
+        $email->setSubject($subject);
+        $email->addTo($addTo);
+        $email->addContent(
+            "text/html", $contentHtml
+        );
+        
+        // Asignamos si contiene email puro texto.
+        if($contentText != ''){
+            $email->addContent("text/plain", $contentText);
+        }
+        // Enviamos Email
+        try {
+            return $this->apiInstance->send($email);
+        } catch (\Exception $th) {
+            return false;
+        }
+    }
     
     public function send($addTo, $templateSlug, $params)
     {
