@@ -33,7 +33,7 @@ class Sendgrid extends BaseService
     public function sendWithoutTemplateWithReplyTo($replyEmail, $replyName, $addTo, $subject, $contentHtml, $contentText = '')
     {
         $email = new \SendGrid\Mail\Mail();
-        $email->setFrom($this->from, $replyName);
+        $email->setFrom($replyEmail, $replyName);
         $email->setReplyTo($replyEmail, $replyName);
         $email->setSubject($subject);
         $email->addTo($addTo);
