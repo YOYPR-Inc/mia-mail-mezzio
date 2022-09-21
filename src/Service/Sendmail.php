@@ -57,7 +57,7 @@ class Sendmail extends BaseService
 
         $mail = new Mail\Message();
         $mail->setFrom($this->from, $this->name);
-        $mail->setSubject($template->subject);
+        $mail->setSubject($this->processParams($template->subject, $params));
         $mail->addTo($addTo);
         
         $html = new MimePart($this->processParams($template->content, $params));

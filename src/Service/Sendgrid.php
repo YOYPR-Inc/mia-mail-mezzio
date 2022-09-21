@@ -63,7 +63,7 @@ class Sendgrid extends BaseService
 
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom($this->from, $this->name);
-        $email->setSubject($template->subject);
+        $email->setSubject($this->processParams($template->subject, $params));
         $email->addTo($addTo);
         $email->addContent(
             "text/html", $this->processParams($template->content, $params)
